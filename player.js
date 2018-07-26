@@ -591,6 +591,13 @@ sampleplayer.CastPlayer.prototype.preloadVideo_ = function(mediaInformation) {
     'url': url,
     'mediaElement': self.mediaElement_
   });
+  host.updateSegmentRequestInfo = function(requestInfo) {
+    // example of setting CORS withCredentials
+    requestInfo.withCredentials = true;
+    // example of setting headers
+    //requestInfo.headers = {};
+    //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+  };
   host.onError = function() {
     self.preloadPlayer_.unload();
     self.preloadPlayer_ = null;
@@ -833,6 +840,13 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
         'url': url,
         'mediaElement': this.mediaElement_
       });
+      host.updateSegmentRequestInfo = function(requestInfo) {
+        // example of setting CORS withCredentials
+        requestInfo.withCredentials = true;
+        // example of setting headers
+        //requestInfo.headers = {};
+        //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+      };
       host.onError = loadErrorCallback;
       this.player_ = new cast.player.api.Player(host);
       this.player_.load(protocolFunc(host));
