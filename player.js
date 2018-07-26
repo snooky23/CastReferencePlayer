@@ -595,8 +595,9 @@ sampleplayer.CastPlayer.prototype.preloadVideo_ = function(mediaInformation) {
     // example of setting CORS withCredentials
     requestInfo.withCredentials = true;
     // example of setting headers
-    //requestInfo.headers = {};
-    //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+    requestInfo.headers = {};
+    requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+    requestInfo.headers['access-control-allow-origin'] = '*';
   };
   host.onError = function() {
     self.preloadPlayer_.unload();
@@ -844,8 +845,9 @@ sampleplayer.CastPlayer.prototype.loadVideo_ = function(info) {
         // example of setting CORS withCredentials
         requestInfo.withCredentials = true;
         // example of setting headers
-        //requestInfo.headers = {};
-        //requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+        requestInfo.headers = {};
+        requestInfo.headers['content-type'] = 'text/xml;charset=utf-8';
+        requestInfo.headers['access-control-allow-origin'] = '*';
       };
       host.onError = loadErrorCallback;
       this.player_ = new cast.player.api.Player(host);
